@@ -1,0 +1,60 @@
+public class App {
+    public static void main(String[] args) {
+        int[] array = {16, 21, 11, 8, 12, 22};
+        int n = array.length;
+
+        // Dizinin sıralanmadan önceki hali
+        System.out.println("Sıralanmadan önce dizi:");
+        for (int element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+        // Sıralama işlemi
+        int[] temp = new int[n];
+        mergeSort(array, temp, 0, n - 1);
+
+        // Dizinin sıralandıktan sonraki hali
+        System.out.println("Sıralandıktan sonra dizi:");
+        for (int element : array) {
+            System.out.print(element + " ");
+        }
+    }
+
+    private static void mergeSort(int[] array, int[] temp, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSort(array, temp, left, mid);       // Sol yarıyı sırala
+            mergeSort(array, temp, mid + 1, right);  // Sağ yarıyı sırala
+            merge(array, temp, left, mid, right);    // İki yarıyı birleştir
+        }
+    }
+
+    private static void merge(int[] array, int[] temp, int left, int mid, int right) {
+        for (int i = left; i <= right; i++) {
+            temp[i] = array[i];
+        }
+
+        int i = left;
+        int j = mid + 1;
+        int k = left;
+
+        while (i <= mid && j <= right) {
+            if (temp[i] <= temp[j]) {
+                array[k] = temp[i];
+                i++;
+            } else {
+                array[k] = temp[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i <= mid) {
+            array[k] = temp[i];
+            i++;
+            k++;
+        }
+
+    }
+}
