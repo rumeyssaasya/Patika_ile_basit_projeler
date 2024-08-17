@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        int sum=0;
+        Scanner intscn=new Scanner(System.in);
+        System.out.println("Enter the number you wanna check is mükemmel or not?");
+        int number =intscn.nextInt();
+        for(int i =1;i<number;i++){
+            if(number%i==0)
+                sum+=i;
+        }
+        if(sum==number)
+        System.out.println("it is mükemmel number.");
+        else
+        System.out.println("it is not mükemmel number.");
+    }
+}
