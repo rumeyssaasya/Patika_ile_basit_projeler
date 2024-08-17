@@ -1,0 +1,88 @@
+public class BinarySearchTree {
+    static class Node {
+        int value;
+        Node left, right;
+
+        Node(int value) {
+            this.value = value;
+            left = right = null;
+        }
+    }
+
+    // Root node
+    Node root;
+
+    // Insert method
+    void insert(int value) {
+        root = insertRec(root, value);
+    }
+
+    // Recursive insert method
+    Node insertRec(Node root, int value) {
+        if (root == null) {
+            root = new Node(value);
+            return root;
+        }
+        if (value < root.value) {
+            root.left = insertRec(root.left, value);
+        } else if (value > root.value) {
+            root.right = insertRec(root.right, value);
+        }
+        return root;
+    }
+
+    // Print in-order traversal
+    void printInOrder() {
+        printInOrderRec(root);
+    }
+
+    // Recursive in-order traversal
+    void printInOrderRec(Node root) {
+        if (root != null) {
+            printInOrderRec(root.left);
+            System.out.print(root.value + " ");
+            printInOrderRec(root.right);
+        }
+    }
+
+    // Print the BST structure
+    void printTreeStructure() {
+        printTreeStructureRec(root, "", true);
+    }
+
+    // Recursive method to print the BST structure
+    void printTreeStructureRec(Node root, String indent, boolean last) {
+        if (root != null) {
+            System.out.print(indent);
+            if (last) {
+                System.out.print("R----");
+                indent += "   ";
+            } else {
+                System.out.print("L----");
+                indent += "|  ";
+            }
+
+            System.out.println(root.value);
+            printTreeStructureRec(root.left, indent, false);
+            printTreeStructureRec(root.right, indent, true);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] values = {7, 5, 1, 8, 3, 6, 0, 9, 4, 2};
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // Insert elements into the BST
+        for (int value : values) {
+            bst.insert(value);
+        }
+
+        // Print the BST structure
+        System.out.println("Binary Search Tree Structure:");
+        bst.printTreeStructure();
+        
+        // Print in-order traversal
+        System.out.println("\nIn-order Traversal:");
+        bst.printInOrder();
+    }
+}
