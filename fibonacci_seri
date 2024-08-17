@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        Scanner intscn=new Scanner(System.in);
+        System.out.println("Fibonacci series element?");
+        int element=intscn.nextInt();
+        int[] fibonacci =new int[100];
+        fibonacci[0]=0;   fibonacci[1]=1;     fibonacci[2]=1;
+        
+        for(int i=3;i<=element;i++){
+            fibonacci[i]=fibonacci[i-1]+fibonacci[i-2];
+        }
+        for(int j=0;j<element;j++)
+            System.out.println(fibonacci[j]);
+        
+        
+    }
+}
