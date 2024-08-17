@@ -18,3 +18,28 @@ public class App {
     }
 }
 }
+**************************************************************
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        boolean isPrime=true;
+        Scanner intscn=new Scanner(System.in);
+        System.out.println("Check primal number?");
+        int num=intscn.nextInt();
+        for (int i=2;i<num;i++){
+            if(num%i==0){
+                
+                isPrime=false;
+                break;}
+                
+        
+    }
+    if(isPrime)
+                     System.out.println("Number is prime.");
+                     else
+                     System.out.println("Number is not prime.");
+        
+    }
+}
+
