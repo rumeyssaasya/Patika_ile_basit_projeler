@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        Employee emp_1=new Employee("john", 100000, 70, 1998);
+        Employee emp_2=new Employee("Carmen", 104000, 50, 2007);
+        Employee emp_3=new Employee("Bruno", 135500000, 43, 2002);
+        System.out.println("Employee information: ");
+        System.out.println(emp_1.toString());
+        System.out.println(emp_2.toString());
+        System.out.println(emp_3.toString());
+
+        System.out.println("Raise Salary: ");
+        emp_1.raiseSalary();
+        emp_2.raiseSalary();
+        emp_3.raiseSalary();
+
+        System.out.println("Tax: ");
+        emp_1.tax();
+        emp_2.tax();
+        emp_3.tax();
+
+        System.out.println("Bonus: ");
+        emp_1.bonus();
+        emp_2.bonus();
+        emp_3.bonus();
+    }
+}
+
+
+
+
+
+public class Employee {
+    String name;
+    int salary;
+    int workhours;
+    int hireYear;
+
+    public Employee(String name,int salary,int workhours,int hireYear){
+            this.name=name;
+            this.salary=salary;
+            this.workhours=workhours;
+            this.hireYear=hireYear;
+    }
+    public void tax(){
+        if(salary<1000)
+            System.out.println("No tax.");
+            else
+            System.out.println("The tax is "+salary*3/100);    
+    }
+    public void bonus(){
+        if(workhours>40)
+            System.out.println("Bonus is "+(workhours-40)*30);    
+            else
+            System.out.println("There is no bonus.");
+    }
+    public void raiseSalary(){
+        int year=2021-hireYear;
+        if(year<10)
+            System.out.println("Your raise salary is " + salary*5/100);
+        if(20>year && year>9)
+            System.out.println("Your raise salary is " + salary*10/100);
+        if(year>19)
+            System.out.println("Your raise salary is " + salary*15/100);
+        }
+
+        @Override
+        public String toString() {
+            return "Employee [Name: " + name + ", Salary: " + salary + ", Work hours: " + workhours + "Hire year: "+hireYear+"]";
+        }    
+    
+     
+    
+}
+/*
+toString() : Çalışana ait bilgileri ekrana bastıracaktır. */
