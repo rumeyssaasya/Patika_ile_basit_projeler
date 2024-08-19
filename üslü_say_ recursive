@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        Scanner intscn =new Scanner(System.in);
+        System.out.print("Enter Base and pow: ");
+        int base =intscn.nextInt();
+        int pow=intscn.nextInt();
+        if(pow==0){
+            System.out.println(base+"^"+pow+" = 1");
+        }
+        System.out.println(base+"^"+pow+" = "+exponential(base,pow));
+        intscn.close();
+    }
+
+public static int exponential(int base,int pow){
+    
+    if(pow==0)
+        return 1;
+    return base*exponential(base, pow-1); 
+
+    }
+}
