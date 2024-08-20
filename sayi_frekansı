@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        Scanner intscn =new Scanner(System.in);
+        int count=0;
+        int[] series =new int[15];
+        System.out.println("Enter the series number (most 15):");
+        int number= intscn.nextInt();
+
+        for(int k=0;k<number;k++){
+            System.out.println("Enter the "+k+"th element : ");
+            int seriNumber= intscn.nextInt();
+            series[k]=seriNumber;
+        }
+
+        for(int i=0;i<number;i++){
+            for(int j=0;j<number;j++){
+                if(series[i]==series[j])
+                    count++;     
+            }
+            System.out.println("There is "+count+" from "+series[i]);
+            count =0;
+        }
+    }
+}
